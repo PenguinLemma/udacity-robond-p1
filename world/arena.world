@@ -5,20 +5,32 @@
     <include>
       <uri>model://slash</uri>
       <pose>0 0 0 0 0 0</pose>
+      <static>1</static>
     </include>
+
+    <!-- Coffee tables-->
+    <include>
+      <uri>model://cafe_table</uri>
+      <name>table1</name>
+      <pose>-10 10 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://cafe_table</uri>
+      <name>table2</name>
+      <pose>10 -10 0 0 0</pose>
+    </include>
+
 
     <!-- Carriages with spheric horse -->
     <include>
       <uri>model://spheric_horse</uri>
       <name>carriage1</name>
       <pose>-5 4 0.5 0 0 0</pose>
-      <scale>1 1 1</scale>
     </include>
     <include>
       <uri>model://spheric_horse</uri>
       <name>carriage2</name>
       <pose>5 -4 0.5 0 0 3.1416</pose>
-      <scale>1.2 1.2 1.2</scale>
     </include>
 
 
@@ -111,5 +123,12 @@
       <elevation>0</elevation>
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose frame=''>40 10 35 0 0.77 -3</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
   </world>
 </sdf>
