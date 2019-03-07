@@ -1,5 +1,7 @@
 <sdf version='1.6'>
   <world name='default'>
+    <!-- Welcome plugin -->
+    <plugin name='welcome' filename='libwelcome.so'/>
 
     <!-- Building -->
     <include>
@@ -130,5 +132,6 @@
         <projection_type>perspective</projection_type>
       </camera>
     </gui>
+    <wind/>
   </world>
 </sdf>
