@@ -1,6 +1,6 @@
 <?xml version='1.0'?>
 <sdf version='1.6'>
-  <model name='dash'>
+  <model name='slash'>
     <pose frame=''>-8.48991 0.791123 0 0 -0 0</pose>
     <link name='Wall_12'>
       <pose frame=''>-14.1397 14.1397 0 0 -0 -2.35619</pose>
