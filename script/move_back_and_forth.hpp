@@ -1,3 +1,6 @@
+// This plugin is based in those that can be found in
+// https://bitbucket.org/osrf/gazebo/src/ > (branch gazebo9) > plugins
+
 #pragma once
 
 #include <iostream>
@@ -37,5 +40,23 @@ private:
 
     std::unique_ptr<MoveBackAndForthPluginPrivate> data_;
 };
+
+// EXAMPLE OF USAGE
+// <model name='your_model'>
+//   <pose frame=''>1.1 2.2 3.3 4.4 5.5 6.6</pose>
+//   <plugin name="back_and_forth" filename="libback_and_forth.so">
+//     <link>link</link>
+//     <starting_position>1.1 2.2 3.3</starting_position>
+//     <ending_position>9.9 9.9 9.9</ending_position>
+//     <speed>2</speed>
+//   </plugin>
+// </model>
+// * <speed> must be in m/s
+// * <starting_position> is assumed to coincide with the starting position of the model,
+//   so the first three numbers in <pose> of the model should coincide with the three
+//   numbers in <starting_position>.
+// * if yaw, pitch and roll in initial pose of the model are 0.0, reset of the world will
+//   be handled correctly by the plugin, meaning that the model will be moved to <starting_position>
+//   with yaw, pitch and roll set to 0.0 and the movement will start from there as it should.
 
 } // namespace gazebo

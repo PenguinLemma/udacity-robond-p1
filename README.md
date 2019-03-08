@@ -13,8 +13,9 @@ This project consists on a world (world/arena.world) involving:
 
 and the following interactions via plugins:
  - Welcome (console output) (script/welcome.cpp)
- - Movement of the sphere (script/move_back_and_forth{_private.hpp, .hpp, .cpp})
+ - Movement of the sphere (script/move_back_and_forth{_private.hpp, .hpp, .cpp}
 
+The plugin MoveBackAndForth is based in those that can be found in https://bitbucket.org/osrf/gazebo/src/ > (branch gazebo9) > plugins.
 ## Instructions
 
 Clone the repository and open a terminal in the root directory.
@@ -26,6 +27,23 @@ Clone the repository and open a terminal in the root directory.
 > cmake ../
 > make
 ```
+### Usage of MoveBackAndForth plugin
+This plugin will move model from `<starting_position>` to `<ending_position>` along a straight line and at a constant linear absolute speed of `<speed>` (m/s).
+
+```
+<model name='your_model'>
+  <pose frame=''>1.1 2.2 3.3 4.4 5.5 6.6</pose>
+  <plugin name="back_and_forth" filename="libback_and_forth.so">
+    <link>link</link>
+    <starting_position>1.1 2.2 3.3</starting_position>
+    <ending_position>9.9 9.9 9.9</ending_position>
+    <speed>2</speed>
+  </plugin>
+</model>
+```
+- `<speed>` must be in m/s
+- `<starting_position>` is assumed to coincide with the starting position of the model, so the first three numbers in `<pose>` of the model should coincide with the three numbers in `<starting_position>`.
+- if yaw, pitch and roll in initial pose of the model are 0.0, reset of the world will be handled correctly by the plugin, meaning that the model will be moved to `<starting_position>` with yaw, pitch and roll set to 0.0 and the movement will start from there as it should.
 
 ### Loading the world
 
@@ -51,7 +69,7 @@ The option `-u` starts the server in a paused state, so that one can see the ini
 It is possible that the first time the world is loaded the following error shows repeatedly:
 ```
 [Err] [Node.cc:105] No namespace found
-````
+```
 This is due to the download of the models from gazebo's online model database not being finished when gazebo is already trying to find the models. If gazebo takes too long in loading after the last time the error is outputted, close it and run the last command again.
 
 4. Click on the play button to see the sphere move along the slash.
