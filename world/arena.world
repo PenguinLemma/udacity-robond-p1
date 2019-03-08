@@ -35,6 +35,66 @@
       <pose>5 -4 0.5 0 0 3.1416</pose>
     </include>
 
+    <!-- Sphere moving on top of slash -->
+    <model name='unit_sphere'>
+      <pose frame=''>-3 -3.3 3 0 0 0</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.1</iyy>
+            <iyz>0</iyz>
+            <izz>0.1</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <sphere>
+              <radius>0.5</radius>
+            </sphere>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <sphere>
+              <radius>0.5</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <plugin name="back_and_forth" filename="libback_and_forth.so">
+        <link>link</link>
+        <starting_position>-3 -3.3 3</starting_position>
+        <ending_position>3.5 3.25 3</ending_position>
+        <speed>2</speed>
+      </plugin>
+    </model>
+
 
     <!-- Light -->
     <light name='sun' type='directional'>
