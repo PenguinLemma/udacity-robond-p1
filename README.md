@@ -33,7 +33,7 @@ If terminal is not in the root folder, substitute `$PWD` by its path in all comm
 
 1. Advise gazebo where to look for the plugins included in the world or model description files:
 ```sh
-> export GAZEBO_PLUGIN_PATH=$PWD/script:$GAZEBO_PLUGIN_PATH
+> export GAZEBO_PLUGIN_PATH=$PWD/build:$GAZEBO_PLUGIN_PATH
 ```
 
 2. Do the same for the models we added:
